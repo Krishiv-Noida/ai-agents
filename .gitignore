@@ -30,5 +30,6 @@ vscode-extension/node_modules/
 .DS_Store
 Thumbs.db
 
-# Test temp files
+# Temporary and user images/screenshots
 hello.py
+images/
