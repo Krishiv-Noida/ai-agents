@@ -120,14 +120,19 @@ python manage.py runserver
 
 Once installed, you can use `codeagent` in **any project or folder on your computer**:
 
-### 1. Install Globally (Local or from GitHub)
-```bash
-# In this repo:
-pip install -e .
+### 1. Install Globally (Recommended)
 
-# Or for other people (from your GitHub repository):
-pip install git+https://github.com/your-username/my_multi_agent_project.git
+Using **uv** (Recommended - installs globally into `~/.local/bin` without needing to activate a virtualenv):
+```bash
+uv tool install git+https://github.com/Krishiv-Noida/ai-agents.git
 ```
+
+Or using standard **pip**:
+```bash
+pip install git+https://github.com/Krishiv-Noida/ai-agents.git
+```
+
+*(For local development in this repo: `pip install -e .`)*
 
 ### 2. Run in Any Directory
 Navigate to any project on your computer:
