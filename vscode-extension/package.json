@@ -1,0 +1,68 @@
+{
+  "name": "code-editor-agent",
+  "displayName": "Code Editor Agent",
+  "description": "Autonomous AI Code Editor Agent & CLI connected to your LangGraph backend.",
+  "version": "0.1.0",
+  "publisher": "local-dev",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Machine Learning"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onView:codeEditorAgent.chatView"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "code-editor-agent-sidebar",
+          "title": "Code Editor Agent",
+          "icon": "$(robot)"
+        }
+      ]
+    },
+    "views": {
+      "code-editor-agent-sidebar": [
+        {
+          "type": "webview",
+          "id": "codeEditorAgent.chatView",
+          "name": "Agent Chat & Edits"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "codeEditorAgent.openChat",
+        "title": "Code Editor Agent: Open Chat Panel"
+      },
+      {
+        "command": "codeEditorAgent.sendSelection",
+        "title": "Code Editor Agent: Edit Current Selection"
+      }
+    ],
+    "configuration": {
+      "title": "Code Editor Agent",
+      "properties": {
+        "codeEditorAgent.apiUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8000/api/orchestrate/",
+          "description": "Backend Django SSE API endpoint URL for orchestration."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.4.0"
+  }
+}
