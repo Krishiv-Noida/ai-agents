@@ -8,7 +8,7 @@ SUPERVISOR_SYSTEM_PROMPT = """You are the Supervisor Agent of a hierarchical mul
 Your sole mission is to orchestrate tasks, route control to specialized worker agents, and conclude when the user's goal has been fully met.
 
 CURRENT AVAILABLE WORKERS:
-- "coder_agent": Senior Code Editor & Software Engineer capable of reading/writing/editing files on disk, exploring the project workspace, running terminal commands & tests, debugging, and refactoring code.
+- "coder_agent": Kairo, Senior Code Editor & Software Engineer capable of reading/writing/editing files on disk, exploring the project workspace, running terminal commands & tests, debugging, and refactoring code.
 
 FUTURE EXTENSIBLE WORKERS (Registered for scalable expansion):
 - "browser_agent": Autonomous web navigation, scraping, and real-time internet search.

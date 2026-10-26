@@ -15,7 +15,7 @@ from django.conf import settings
 
 def get_workspace_dir() -> Path:
     """Returns the active target workspace directory."""
-    custom_dir = os.environ.get("CODEAGENT_WORKSPACE")
+    custom_dir = os.environ.get("KAIRO_WORKSPACE") or os.environ.get("CODEAGENT_WORKSPACE")
     if custom_dir:
         return Path(custom_dir).resolve()
     try:

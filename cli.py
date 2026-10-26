@@ -1,18 +1,21 @@
 #!/usr/bin/env python
 """
-Global CLI entrypoint for the Code Editor Agent.
+Global CLI entrypoint for Kairo - Autonomous AI Code Editor Agent.
 
 Usage:
-    codeagent "Create a file named utils.py"
-    codeagent --dir /path/to/my-project "Refactor index.js"
-    codeagent
+    kairo "Create a file named utils.py"
+    kairo --dir /path/to/my-project "Refactor index.js"
+    kairo
 """
 import os
 import sys
 
-# Set default workspace to the current working directory from which codeagent was called
-if "CODEAGENT_WORKSPACE" not in os.environ:
-    os.environ["CODEAGENT_WORKSPACE"] = os.getcwd()
+# Set default workspace to the current working directory from which kairo was called
+workspace = os.environ.get("KAIRO_WORKSPACE") or os.environ.get("CODEAGENT_WORKSPACE")
+if not workspace:
+    workspace = os.getcwd()
+os.environ["KAIRO_WORKSPACE"] = workspace
+os.environ["CODEAGENT_WORKSPACE"] = workspace
 
 # Ensure package directory is in sys.path
 PACKAGE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -28,12 +31,12 @@ from django.core.management import call_command
 
 
 def main():
-    """Main CLI entrypoint registered in pyproject.toml as `codeagent`."""
+    """Main CLI entrypoint registered in pyproject.toml as `kairo` and `codeagent`."""
     args = sys.argv[1:]
     try:
         call_command("orchestrate", *args)
     except KeyboardInterrupt:
-        print("\nOperation cancelled by user.")
+        print("\n[Kairo] Operation cancelled by user.")
         sys.exit(0)
 
 

@@ -1,6 +1,6 @@
-# Hierarchical Multi-Agent System (Django + LangGraph)
+# Kairo: Autonomous AI Code Editor Agent & CLI (Django + LangGraph)
 
-A scalable, asynchronous Hierarchical Multi-Agent System built with **Django (ASGI)** and **LangGraph**. The system utilizes a central **Supervisor Agent** that acts as a state router to orchestrate specialized worker agents (starting with a **Coder Agent**), while providing a zero-restructure architecture for adding future workers such as `browser_agent`, `sql_agent`, or `booking_agent`.
+**Kairo** is an autonomous, scalable AI Code Editor Agent built with **Django (ASGI)** and **LangGraph**. Designed as a next-generation software engineering assistant, Kairo can inspect repositories, apply surgical search-and-replace edits, execute terminal test suites, self-correct errors, and seamlessly integrate into IDEs via CLI, MCP, and a native VS Code extension.
 
 ---
 
@@ -36,9 +36,9 @@ my_multi_agent_project/
 │       ├── __init__.py
 │       ├── supervisor_prompts.py   # Supervisor routing instructions
 │       └── coder_prompts.py        # Senior software engineer worker instructions
-├── cli.py                          # Global CLI entrypoint (`codeagent`)
-├── mcp_server.py                   # Model Context Protocol (MCP) server for IDEs
-├── vscode-extension/               # Native VS Code Extension panel with live SSE streaming
+├── cli.py                          # Global CLI entrypoint (`kairo` / `codeagent`)
+├── mcp_server.py                   # Model Context Protocol (MCP) server for Kairo
+├── vscode-extension/               # Native Kairo VS Code Extension with live SSE streaming
 ├── pyproject.toml                  # Standard packaging manifest for pip/pipx installation
 ├── manage.py                       # Django administrative CLI
 ├── requirements.txt                # Project dependencies
@@ -116,9 +116,9 @@ python manage.py runserver
 
 ---
 
-## 💻 Global CLI Usage (`codeagent`)
+## 💻 Global CLI Usage (`kairo`)
 
-Once installed, you can use `codeagent` in **any project or folder on your computer**:
+Once installed, you can use `kairo` in **any project or folder on your computer**:
 
 ### 1. Install Globally (Recommended)
 
@@ -138,19 +138,19 @@ pip install git+https://github.com/Krishiv-Noida/ai-agents.git
 Navigate to any project on your computer:
 ```bash
 cd /path/to/any-project
-codeagent "Add a new helper function to format dates in utils.py"
+kairo "Add a new helper function to format dates in utils.py"
 ```
-The agent automatically detects the active folder and performs edits directly on that project's files!
+Kairo automatically detects the active folder and performs edits directly on that project's files!
 
 ### 3. Specify a Target Folder Explicitly
 ```bash
-codeagent --dir /path/to/my-other-project "Inspect package.json and run tests"
+kairo --dir /path/to/my-other-project "Inspect package.json and run tests"
 ```
 
 ### 4. Interactive Chat Mode
 Run without arguments to launch an interactive conversation:
 ```bash
-codeagent
+kairo
 ```
 
 ---
@@ -194,7 +194,7 @@ python mcp_server.py
 ```json
 {
   "mcpServers": {
-    "code-editor-agent": {
+    "kairo": {
       "command": "/home/nitin/Desktop/Agents_ecosystem/.venv/bin/python",
       "args": ["/home/nitin/Desktop/Agents_ecosystem/my_multi_agent_project/mcp_server.py"]
     }

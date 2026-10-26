@@ -64,23 +64,25 @@ class Command(BaseCommand):
 
         if options.get("dir"):
             target_dir = os.path.abspath(options["dir"])
+            os.environ["KAIRO_WORKSPACE"] = target_dir
             os.environ["CODEAGENT_WORKSPACE"] = target_dir
-        elif "CODEAGENT_WORKSPACE" not in os.environ:
+        elif "KAIRO_WORKSPACE" not in os.environ and "CODEAGENT_WORKSPACE" not in os.environ:
+            os.environ["KAIRO_WORKSPACE"] = os.getcwd()
             os.environ["CODEAGENT_WORKSPACE"] = os.getcwd()
 
-        workspace = os.environ["CODEAGENT_WORKSPACE"]
+        workspace = os.environ.get("KAIRO_WORKSPACE") or os.environ.get("CODEAGENT_WORKSPACE")
         thread_id = options["thread_id"] or str(uuid.uuid4())[:8]
         message = options["message"]
 
         if message:
             # Single-shot CLI execution
-            self.stdout.write(self.style.MIGRATE_HEADING(f"\n🚀 Running task in session: [{thread_id}]"))
+            self.stdout.write(self.style.MIGRATE_HEADING(f"\n🚀 [Kairo] Running task in session: [{thread_id}]"))
             self.stdout.write(self.style.NOTICE(f"📁 Target Workspace: {workspace}\n"))
             asyncio.run(self._run_prompt(message, thread_id))
         else:
             # Interactive multi-turn REPL mode
             self.stdout.write(self.style.SUCCESS("\n========================================================"))
-            self.stdout.write(self.style.SUCCESS("🤖 Code Editor Agent CLI (Multi-Agent)"))
+            self.stdout.write(self.style.SUCCESS("🤖 Kairo: Autonomous AI Code Editor CLI"))
             self.stdout.write(self.style.SUCCESS(f"Session Thread ID: {thread_id}"))
             self.stdout.write(self.style.NOTICE(f"📁 Target Workspace: {workspace}"))
             self.stdout.write("Type your prompt and press Enter. Type 'exit' or 'quit' to stop.")
@@ -129,7 +131,7 @@ class Command(BaseCommand):
                         files_modified = worker_outputs.get("files_modified", [])
                         commands_run = worker_outputs.get("commands_run", [])
 
-                        self.stdout.write(self.style.MIGRATE_LABEL("💻 [Coder Agent]: Completed work."))
+                        self.stdout.write(self.style.MIGRATE_LABEL("💻 [Kairo]: Completed work."))
                         if files_modified:
                             self.stdout.write(self.style.SUCCESS(f"   📁 Files Modified/Created: {', '.join(files_modified)}"))
                         if commands_run:

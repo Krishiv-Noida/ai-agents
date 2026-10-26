@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """
-Model Context Protocol (MCP) Server for the Code Editor Agent.
+Model Context Protocol (MCP) Server for Kairo - Autonomous Code Editor Agent.
 
-Exposes the Hierarchical Multi-Agent System and its workspace tools over MCP (stdio).
+Exposes Kairo and workspace developer tools over MCP (stdio).
 Compatible with VS Code (Cline, Roo, Continue), Cursor, Windsurf, Claude Desktop, and Antigravity.
 """
 import os
@@ -31,7 +31,7 @@ from orchestration_app.tools.dev_tools import (
     run_terminal_command as _run_terminal_command_tool,
 )
 
-server = MCPServer("code-editor-agent")
+server = MCPServer("kairo")
 
 
 def _format_content(content) -> str:
@@ -88,7 +88,7 @@ async def orchestrate_coding_task(prompt: str, thread_id: Optional[str] = None) 
                 commands_run.extend(worker_outputs.get("commands_run", []))
 
     response_lines = [
-        f"### Code Editor Agent Task Completed [Session: {session_id}]",
+        f"### Kairo Task Completed [Session: {session_id}]",
         "",
     ]
     if files_modified:

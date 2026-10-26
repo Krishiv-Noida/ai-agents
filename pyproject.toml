@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "code-editor-agent"
+name = "kairo-agent"
 version = "0.1.0"
-description = "Autonomous AI Multi-Agent Code Editor & CLI for any repository or IDE"
+description = "Kairo: Autonomous AI Code Editor Agent & CLI for any repository or IDE"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -22,6 +22,7 @@ dependencies = [
 ]
 
 [project.scripts]
+kairo = "cli:main"
 codeagent = "cli:main"
 
 [tool.setuptools]

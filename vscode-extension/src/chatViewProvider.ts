@@ -54,7 +54,7 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Editor Agent</title>
+    <title>Kairo - Code Editor Agent</title>
     <style>
         body {
             font-family: var(--vscode-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif);
@@ -168,12 +168,12 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
 </head>
 <body>
     <div id="header">
-        <span>🤖 Code Editor Agent</span>
+        <span>🤖 Kairo</span>
         <span id="status-tag">Ready</span>
     </div>
     <div id="chat-messages">
         <div class="msg msg-agent">
-            Hello! I am your AI Code Editor Agent. Ask me to create files, refactor existing code, or run test suites.
+            Hello! I am Kairo, your AI Code Editor Agent. Ask me to create files, refactor existing code, or run test suites.
         </div>
     </div>
     <div id="input-container">

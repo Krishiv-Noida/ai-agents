@@ -1,7 +1,7 @@
 {
-  "name": "code-editor-agent",
-  "displayName": "Code Editor Agent",
-  "description": "Autonomous AI Code Editor Agent & CLI connected to your LangGraph backend.",
+  "name": "kairo",
+  "displayName": "Kairo - AI Code Editor Agent",
+  "description": "Kairo: Autonomous AI Code Editor Agent & CLI connected to your LangGraph backend.",
   "version": "0.1.0",
   "publisher": "local-dev",
   "engines": {
